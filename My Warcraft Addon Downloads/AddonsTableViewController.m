@@ -52,6 +52,8 @@
         Addon *addon = [[Addon alloc] init];
         addon.addonName = key;
         [_addons addObject:addon];
+        addon = [_addons member:addon];
+        addon.addonTotalDownloads = @5;
     }
     [self.tableView reloadData];
 }
@@ -90,8 +92,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
-    Addon *addon = [[_addons allObjects] objectAtIndex:indexPath.row];
-    cell.textLabel.text = addon.addonName;
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"addonName" ascending:YES];
+    Addon *addon = [[_addons sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", addon.addonName, addon.addonTotalDownloads];
     return cell;
 }
 
