@@ -15,6 +15,8 @@
 		03672C8A1B609535007E51B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03672C891B609535007E51B9 /* Images.xcassets */; };
 		03672C8D1B609535007E51B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03672C8B1B609535007E51B9 /* LaunchScreen.xib */; };
 		03672C991B609536007E51B9 /* My_Warcraft_Addon_DownloadsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672C981B609536007E51B9 /* My_Warcraft_Addon_DownloadsTests.m */; };
+		03672CA61B6096DE007E51B9 /* Addon.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CA31B6096DE007E51B9 /* Addon.m */; };
+		03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,10 @@
 		03672C921B609536007E51B9 /* My Warcraft Addon DownloadsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Warcraft Addon DownloadsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03672C971B609536007E51B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03672C981B609536007E51B9 /* My_Warcraft_Addon_DownloadsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = My_Warcraft_Addon_DownloadsTests.m; sourceTree = "<group>"; };
+		03672CA21B6096DE007E51B9 /* Addon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addon.h; sourceTree = "<group>"; };
+		03672CA31B6096DE007E51B9 /* Addon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addon.m; sourceTree = "<group>"; };
+		03672CA41B6096DE007E51B9 /* AddonsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddonsTableViewController.h; sourceTree = "<group>"; };
+		03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddonsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,10 @@
 		03672C781B609535007E51B9 /* My Warcraft Addon Downloads */ = {
 			isa = PBXGroup;
 			children = (
+				03672CA21B6096DE007E51B9 /* Addon.h */,
+				03672CA31B6096DE007E51B9 /* Addon.m */,
+				03672CA41B6096DE007E51B9 /* AddonsTableViewController.h */,
+				03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */,
 				03672C7D1B609535007E51B9 /* AppDelegate.h */,
 				03672C7E1B609535007E51B9 /* AppDelegate.m */,
 				03672C831B609535007E51B9 /* ViewController.h */,
@@ -223,6 +233,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03672C7F1B609535007E51B9 /* AppDelegate.m in Sources */,
+				03672CA61B6096DE007E51B9 /* Addon.m in Sources */,
+				03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */,
 				03672C821B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */,
 				03672C851B609535007E51B9 /* ViewController.m in Sources */,
 				03672C7C1B609535007E51B9 /* main.m in Sources */,
@@ -422,6 +434,7 @@
 				03672C9E1B609536007E51B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03672C9F1B609536007E51B9 /* Build configuration list for PBXNativeTarget "My Warcraft Addon DownloadsTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +443,7 @@
 				03672CA11B609536007E51B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
