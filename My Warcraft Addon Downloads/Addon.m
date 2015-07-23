@@ -10,4 +10,8 @@
 
 @implementation Addon
 
+- (BOOL)isEqual:(Addon *)other {
+    return [self.addonName isEqualToString:other.addonName];
+}
+
 @end

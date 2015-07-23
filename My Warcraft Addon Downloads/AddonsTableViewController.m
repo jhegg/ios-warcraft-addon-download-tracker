@@ -11,7 +11,7 @@
 
 @interface AddonsTableViewController ()
 
-@property NSMutableArray *addons;
+@property NSMutableSet *addons;
 
 - (IBAction)refresh:(UIRefreshControl *)sender;
 
@@ -28,7 +28,7 @@
                             action:@selector(refresh:)
                   forControlEvents:UIControlEventValueChanged];
     
-    _addons = [[NSMutableArray alloc] init];
+    _addons = [[NSMutableSet alloc] init];
     [self refresh:self.refreshControl];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -90,7 +90,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
-    Addon *addon = [_addons objectAtIndex:indexPath.row];
+    Addon *addon = [[_addons allObjects] objectAtIndex:indexPath.row];
     cell.textLabel.text = addon.addonName;
     return cell;
 }

@@ -13,4 +13,6 @@
 @property NSString *addonName;
 @property NSNumber *addonTotalDownloads;
 
+- (BOOL)isEqual:(Addon *)other;
+
 @end
