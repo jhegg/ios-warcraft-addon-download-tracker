@@ -43,17 +43,74 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateAddonDownloadCount:(NSNumber *)count addonName:(NSString *)addonName {
+    for (Addon *addon in _addons) {
+        if ([addon.addonName isEqualToString:addonName]) {
+            addon.addonTotalDownloads = count;
+            [self.tableView reloadData];
+            return;
+        }
+    }
+}
+
+- (void)updateAddonDownloadCountFromJson:(NSData *)data addonName:(NSString *)addonName {
+    NSDictionary *addonsFromJson = [NSJSONSerialization
+                                    JSONObjectWithData:data
+                                    options:0
+                                    error:NULL];
+    NSArray *downloads = [addonsFromJson valueForKey:@"downloads"];
+    NSArray *sortedCounts = [downloads sortedArrayUsingComparator:^(id obj1, id obj2) {
+        NSNumber *first = @([[obj1 objectForKey:@"count"] intValue]);
+        NSNumber *second = @([[obj2 objectForKey:@"count"] intValue]);
+        return [first compare:second];
+    }];
+    
+    NSNumber *maxCount = @([[[sortedCounts lastObject] objectForKey:@"count"] intValue]);
+    [self updateAddonDownloadCount:maxCount addonName:addonName];
+}
+
+- (void)queryDownloadCountForAddon:(NSString *)addonName {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://boxing-marks-7365.herokuapp.com/addons/%@/downloads", addonName]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection
+     sendAsynchronousRequest:request
+     queue:[NSOperationQueue mainQueue]
+     completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+         if (data.length > 0 && connectionError == nil) {
+             [self updateAddonDownloadCountFromJson:data addonName:addonName];
+         }
+     }];
+}
+
+- (void)createAddon:(NSString *)addonName {
+    Addon *addon = [[Addon alloc] init];
+    addon.addonName = addonName;
+    [self queryDownloadCountForAddon:addonName];
+    [_addons addObject:addon];
+}
+
+- (void)updateAddon:(Addon *)addon {
+    [self queryDownloadCountForAddon:addon.addonName];
+}
+
+- (void)processAddonFromJson:(NSString *)addonName {
+    for (Addon *addon in _addons) {
+        if ([addon.addonName isEqualToString:addonName]) {
+            [self updateAddon:addon];
+            return;
+        }
+    }
+    
+    [self createAddon:addonName];
+}
+
 - (void)updateTableFromJsonData:(NSData *)data {
     NSDictionary *addonsFromJson = [NSJSONSerialization
                                     JSONObjectWithData:data
                                     options:0
                                     error:NULL];
     for (NSString *key in addonsFromJson) {
-        Addon *addon = [[Addon alloc] init];
-        addon.addonName = key;
-        [_addons addObject:addon];
-        addon = [_addons member:addon];
-        addon.addonTotalDownloads = @5;
+        [self processAddonFromJson:key];
     }
     [self.tableView reloadData];
 }
