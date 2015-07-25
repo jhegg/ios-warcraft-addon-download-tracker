@@ -13,15 +13,12 @@
 @interface AddonsTableViewController ()
 
 @property Addons *addons2;
-@property (nonatomic, strong) id addonsObserveToken;
 
 - (IBAction)refresh:(UIRefreshControl *)sender;
 
 @end
 
 @implementation AddonsTableViewController
-
-// TODO: register KVO for Addons changes
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +30,8 @@
                   forControlEvents:UIControlEventValueChanged];
     
     self.addons2 = [[Addons alloc] init];
+    self.addons2.delegate = self;
+    
     [self refresh:self.refreshControl];
 }
 
@@ -45,6 +44,10 @@
         [self.tableView reloadData];
         handler();
     }];
+}
+
+- (void)refreshTable {
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

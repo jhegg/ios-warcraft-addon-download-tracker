@@ -105,6 +105,7 @@
     for (Addon *addon in _addons) {
         if ([addon.addonName isEqualToString:addonName]) {
             addon.addonTotalDownloads = count;
+            [self.delegate refreshTable];
             return;
         }
     }

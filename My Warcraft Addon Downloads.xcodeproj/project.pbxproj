@@ -48,6 +48,7 @@
 		03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddonsTableViewController.m; sourceTree = "<group>"; };
 		03672CAE1B6340A4007E51B9 /* Addons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addons.h; sourceTree = "<group>"; };
 		03672CAF1B6340A4007E51B9 /* Addons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addons.m; sourceTree = "<group>"; };
+		03672CB11B641B24007E51B9 /* AddonsTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddonsTableViewControllerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +103,7 @@
 				03672C791B609535007E51B9 /* Supporting Files */,
 				03672CAE1B6340A4007E51B9 /* Addons.h */,
 				03672CAF1B6340A4007E51B9 /* Addons.m */,
+				03672CB11B641B24007E51B9 /* AddonsTableViewControllerDelegate.h */,
 			);
 			path = "My Warcraft Addon Downloads";
 			sourceTree = "<group>";

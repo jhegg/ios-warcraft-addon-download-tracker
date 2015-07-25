@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddonsTableViewControllerDelegate.h"
 
-@interface AddonsTableViewController : UITableViewController
+@interface AddonsTableViewController : UITableViewController <AddonsTableViewControllerDelegate>
 
 @end

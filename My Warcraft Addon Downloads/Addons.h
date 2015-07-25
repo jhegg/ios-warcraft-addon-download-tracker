@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AddonsTableViewControllerDelegate.h"
 
 @interface Addons : NSObject
 
 @property NSInteger count;
+@property id <AddonsTableViewControllerDelegate> delegate;
 
 - (NSArray *)allAddons;
 - (void)updateAddons:(void(^)(void))handler;
