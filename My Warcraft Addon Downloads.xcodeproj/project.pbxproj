@@ -16,6 +16,7 @@
 		03672C991B609536007E51B9 /* My_Warcraft_Addon_DownloadsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672C981B609536007E51B9 /* My_Warcraft_Addon_DownloadsTests.m */; };
 		03672CA61B6096DE007E51B9 /* Addon.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CA31B6096DE007E51B9 /* Addon.m */; };
 		03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */; };
+		03672CB01B6340A4007E51B9 /* Addons.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CAF1B6340A4007E51B9 /* Addons.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		03672CA31B6096DE007E51B9 /* Addon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addon.m; sourceTree = "<group>"; };
 		03672CA41B6096DE007E51B9 /* AddonsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddonsTableViewController.h; sourceTree = "<group>"; };
 		03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddonsTableViewController.m; sourceTree = "<group>"; };
+		03672CAE1B6340A4007E51B9 /* Addons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addons.h; sourceTree = "<group>"; };
+		03672CAF1B6340A4007E51B9 /* Addons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addons.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				03672C8B1B609535007E51B9 /* LaunchScreen.xib */,
 				03672C801B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld */,
 				03672C791B609535007E51B9 /* Supporting Files */,
+				03672CAE1B6340A4007E51B9 /* Addons.h */,
+				03672CAF1B6340A4007E51B9 /* Addons.m */,
 			);
 			path = "My Warcraft Addon Downloads";
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03672CB01B6340A4007E51B9 /* Addons.m in Sources */,
 				03672C7F1B609535007E51B9 /* AppDelegate.m in Sources */,
 				03672CA61B6096DE007E51B9 /* Addon.m in Sources */,
 				03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */,
