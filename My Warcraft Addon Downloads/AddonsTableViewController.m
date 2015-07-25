@@ -8,10 +8,11 @@
 
 #import "AddonsTableViewController.h"
 #import "Addon.h"
+#import "Addons.h"
 
 @interface AddonsTableViewController ()
 
-@property NSMutableSet *addons;
+@property Addons *addons2;
 
 - (IBAction)refresh:(UIRefreshControl *)sender;
 
@@ -28,7 +29,9 @@
                             action:@selector(refresh:)
                   forControlEvents:UIControlEventValueChanged];
     
-    _addons = [[NSMutableSet alloc] init];
+    self.addons2 = [[Addons alloc] init];
+    self.addons2.delegate = self;
+    
     [self refresh:self.refreshControl];
 }
 
@@ -36,96 +39,21 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)updateAddonDownloadCount:(NSNumber *)count addonName:(NSString *)addonName {
-    for (Addon *addon in _addons) {
-        if ([addon.addonName isEqualToString:addonName]) {
-            addon.addonTotalDownloads = count;
-            [self.tableView reloadData];
-            return;
-        }
-    }
-}
-
-- (void)updateAddonDownloadCountFromJson:(NSData *)data addonName:(NSString *)addonName {
-    NSDictionary *addonsFromJson = [NSJSONSerialization
-                                    JSONObjectWithData:data
-                                    options:0
-                                    error:NULL];
-    NSArray *downloads = [addonsFromJson valueForKey:@"downloads"];
-    NSArray *sortedCounts = [downloads sortedArrayUsingComparator:^(id obj1, id obj2) {
-        NSNumber *first = @([[obj1 objectForKey:@"count"] intValue]);
-        NSNumber *second = @([[obj2 objectForKey:@"count"] intValue]);
-        return [first compare:second];
-    }];
-    
-    NSNumber *maxCount = @([[[sortedCounts lastObject] objectForKey:@"count"] intValue]);
-    [self updateAddonDownloadCount:maxCount addonName:addonName];
-}
-
-- (void)queryDownloadCountForAddon:(NSString *)addonName {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://boxing-marks-7365.herokuapp.com/addons/%@/downloads", addonName]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection
-     sendAsynchronousRequest:request
-     queue:[NSOperationQueue mainQueue]
-     completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-         if (data.length > 0 && connectionError == nil) {
-             [self updateAddonDownloadCountFromJson:data addonName:addonName];
-         }
-     }];
-}
-
-- (void)createAddon:(NSString *)addonName {
-    Addon *addon = [[Addon alloc] init];
-    addon.addonName = addonName;
-    [self queryDownloadCountForAddon:addonName];
-    [_addons addObject:addon];
-}
-
-- (void)updateAddon:(Addon *)addon {
-    [self queryDownloadCountForAddon:addon.addonName];
-}
-
-- (void)processAddonFromJson:(NSString *)addonName {
-    for (Addon *addon in _addons) {
-        if ([addon.addonName isEqualToString:addonName]) {
-            [self updateAddon:addon];
-            return;
-        }
-    }
-    
-    [self createAddon:addonName];
-}
-
-- (void)updateTableFromJsonData:(NSData *)data {
-    NSDictionary *addonsFromJson = [NSJSONSerialization
-                                    JSONObjectWithData:data
-                                    options:0
-                                    error:NULL];
-    for (NSString *key in addonsFromJson) {
-        [self processAddonFromJson:key];
-    }
-    [self.tableView reloadData];
-}
-
 - (IBAction)updateAddons:(void (^)(void))handler {
-    NSURL *url = [NSURL URLWithString:@"https://boxing-marks-7365.herokuapp.com/addons"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection
-     sendAsynchronousRequest:request
-     queue:[NSOperationQueue mainQueue]
-     completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-         if (data.length > 0 && connectionError == nil) {
-             [self updateTableFromJsonData:data];
-             handler();
-         }
-     }];
+    [self.addons2 updateAddons:^{
+        [self.tableView reloadData];
+        handler();
+    }];
+}
+
+- (void)refreshTable {
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (_addons && _addons.count > 0) {
+    if (self.addons2 && self.addons2.count > 0) {
         tableView.backgroundView = nil;
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return 1;
@@ -136,14 +64,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_addons count];
+    return self.addons2.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
-    
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"addonName" ascending:YES];
-    Addon *addon = [[_addons sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] objectAtIndex:indexPath.row];
+    Addon *addon = [[self.addons2 allAddons] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString
                            stringWithFormat:@"%@ - %@",
                            addon.addonName,
