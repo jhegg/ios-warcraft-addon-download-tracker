@@ -151,7 +151,10 @@
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"addonName" ascending:YES];
     Addon *addon = [[_addons sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", addon.addonName, addon.addonTotalDownloads];
+    cell.textLabel.text = [NSString
+                           stringWithFormat:@"%@ - %@",
+                           addon.addonName,
+                           addon.addonTotalDownloads ?: @"..."];
     return cell;
 }
 
