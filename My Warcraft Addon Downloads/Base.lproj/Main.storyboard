@@ -27,7 +27,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="5mJ-Jr-myc" kind="show" id="PBI-CI-HqE"/>
+                                    <segue destination="5mJ-Jr-myc" kind="show" identifier="addonDetail" id="PBI-CI-HqE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="34" y="275"/>
         </scene>
-        <!--View Controller-->
+        <!--Addon Detail-->
         <scene sceneID="WfC-F6-6yC">
             <objects>
-                <viewController id="5mJ-Jr-myc" sceneMemberID="viewController">
+                <viewController title="Addon Detail" id="5mJ-Jr-myc" customClass="AddonDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TZ5-hQ-Ffw"/>
                         <viewControllerLayoutGuide type="bottom" id="n7Y-ze-pbY"/>

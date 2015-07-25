@@ -7,6 +7,7 @@
 //
 
 #import "AddonsTableViewController.h"
+#import "AddonDetailViewController.h"
 #import "Addon.h"
 #import "Addons.h"
 
@@ -75,15 +76,16 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"addonDetail"]) {
+        AddonDetailViewController *destination = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        destination.addon = [[self.addons2 allAddons] objectAtIndex:indexPath.row];
+    }
 }
-*/
 
 - (IBAction)refresh:(UIRefreshControl *)sender {
     sender.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
