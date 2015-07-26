@@ -51,7 +51,7 @@
 
 - (void)processAddonFromJson:(NSString *)addonName {
     for (Addon *addon in self.addons) {
-        if ([addon.addonName isEqualToString:addonName]) {
+        if ([addon.name isEqualToString:addonName]) {
             [self updateAddon:addon];
             return;
         }
@@ -62,14 +62,14 @@
 
 - (void)createAddon:(NSString *)addonName {
     Addon *addon = [[Addon alloc] init];
-    addon.addonName = addonName;
+    addon.name = addonName;
     [self queryDownloadCountForAddon:addonName];
     [self.addons addObject:addon];
     self.count = self.addons.count;
 }
 
 - (void)updateAddon:(Addon *)addon {
-    [self queryDownloadCountForAddon:addon.addonName];
+    [self queryDownloadCountForAddon:addon.name];
 }
 
 - (void)queryDownloadCountForAddon:(NSString *)addonName {
@@ -91,20 +91,39 @@
                                     options:0
                                     error:NULL];
     NSArray *downloads = [addonsFromJson valueForKey:@"downloads"];
-    NSArray *sortedCounts = [downloads sortedArrayUsingComparator:^(id obj1, id obj2) {
-        NSNumber *first = @([[obj1 objectForKey:@"count"] intValue]);
-        NSNumber *second = @([[obj2 objectForKey:@"count"] intValue]);
-        return [first compare:second];
-    }];
-    
-    NSNumber *maxCount = @([[[sortedCounts lastObject] objectForKey:@"count"] intValue]);
-    [self updateAddonDownloadCount:maxCount addonName:addonName];
+    NSArray *downloadsSortedByDate = [self sortByDate:downloads];
+    NSNumber *maxCount = [[downloadsSortedByDate firstObject] valueForKey:@"count"];
+    [self updateAddonDownloadCount:maxCount
+               withDownloadHistory:downloadsSortedByDate
+                     withAddonName:addonName];
 }
 
-- (void)updateAddonDownloadCount:(NSNumber *)count addonName:(NSString *)addonName {
+- (NSArray *)sortByDate:(NSArray *)downloads {
+    NSDateFormatter *formatter = [self buildDateFormatter];
+    NSMutableArray *downloadsWithRealDates = [[NSMutableArray alloc] initWithCapacity:downloads.count];
+    for (id object in downloads) {
+        NSDate *date = [formatter dateFromString:[object valueForKey:@"timestamp"]];
+        NSNumber *count = [object valueForKey:@"count"];
+        NSDictionary *downloadData = [[NSDictionary alloc] initWithObjects:@[date, count] forKeys:@[@"timestamp", @"count"]];
+        [downloadsWithRealDates addObject:downloadData];
+    }
+    NSSortDescriptor *sortByDate = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
+    return [downloadsWithRealDates sortedArrayUsingDescriptors:@[sortByDate]];
+}
+
+- (NSDateFormatter *)buildDateFormatter {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUsPosixLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUsPosixLocale];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    return formatter;
+}
+
+- (void)updateAddonDownloadCount:(NSNumber *)count withDownloadHistory:(NSArray *)downloads withAddonName:(NSString *)addonName {
     for (Addon *addon in _addons) {
-        if ([addon.addonName isEqualToString:addonName]) {
-            addon.addonTotalDownloads = count;
+        if ([addon.name isEqualToString:addonName]) {
+            addon.currentDownloadCount = count;
+            addon.downloadHistory = downloads;
             [self.delegate refreshTable];
             return;
         }
@@ -113,7 +132,7 @@
 
 - (NSArray *)allAddons {
     NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"addonName"
+                                        initWithKey:@"name"
                                         ascending:YES
                                         selector:@selector(localizedCaseInsensitiveCompare:)];
     return [self.addons sortedArrayUsingDescriptors:[NSArray arrayWithObjects:nameDescriptor, nil]];

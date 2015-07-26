@@ -17,6 +17,7 @@
 		03672CA61B6096DE007E51B9 /* Addon.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CA31B6096DE007E51B9 /* Addon.m */; };
 		03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */; };
 		03672CB01B6340A4007E51B9 /* Addons.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CAF1B6340A4007E51B9 /* Addons.m */; };
+		038C5F961B6584CC0027E915 /* AddonDownloadsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C5F951B6584CC0027E915 /* AddonDownloadsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		03672CAE1B6340A4007E51B9 /* Addons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addons.h; sourceTree = "<group>"; };
 		03672CAF1B6340A4007E51B9 /* Addons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addons.m; sourceTree = "<group>"; };
 		03672CB11B641B24007E51B9 /* AddonsTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddonsTableViewControllerDelegate.h; sourceTree = "<group>"; };
+		038C5F941B6584CC0027E915 /* AddonDownloadsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddonDownloadsTableViewController.h; sourceTree = "<group>"; };
+		038C5F951B6584CC0027E915 /* AddonDownloadsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddonDownloadsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,18 +95,20 @@
 			children = (
 				03672CA21B6096DE007E51B9 /* Addon.h */,
 				03672CA31B6096DE007E51B9 /* Addon.m */,
-				03672CA41B6096DE007E51B9 /* AddonsTableViewController.h */,
-				03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */,
-				03672C7D1B609535007E51B9 /* AppDelegate.h */,
-				03672C7E1B609535007E51B9 /* AppDelegate.m */,
-				03672C861B609535007E51B9 /* Main.storyboard */,
-				03672C891B609535007E51B9 /* Images.xcassets */,
-				03672C8B1B609535007E51B9 /* LaunchScreen.xib */,
-				03672C801B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld */,
-				03672C791B609535007E51B9 /* Supporting Files */,
+				038C5F941B6584CC0027E915 /* AddonDownloadsTableViewController.h */,
+				038C5F951B6584CC0027E915 /* AddonDownloadsTableViewController.m */,
 				03672CAE1B6340A4007E51B9 /* Addons.h */,
 				03672CAF1B6340A4007E51B9 /* Addons.m */,
+				03672CA41B6096DE007E51B9 /* AddonsTableViewController.h */,
+				03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */,
 				03672CB11B641B24007E51B9 /* AddonsTableViewControllerDelegate.h */,
+				03672C7D1B609535007E51B9 /* AppDelegate.h */,
+				03672C7E1B609535007E51B9 /* AppDelegate.m */,
+				03672C891B609535007E51B9 /* Images.xcassets */,
+				03672C8B1B609535007E51B9 /* LaunchScreen.xib */,
+				03672C861B609535007E51B9 /* Main.storyboard */,
+				03672C801B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld */,
+				03672C791B609535007E51B9 /* Supporting Files */,
 			);
 			path = "My Warcraft Addon Downloads";
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				03672CA61B6096DE007E51B9 /* Addon.m in Sources */,
 				03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */,
 				03672C821B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */,
+				038C5F961B6584CC0027E915 /* AddonDownloadsTableViewController.m in Sources */,
 				03672C7C1B609535007E51B9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

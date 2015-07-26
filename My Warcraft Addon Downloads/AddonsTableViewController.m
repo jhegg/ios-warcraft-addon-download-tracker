@@ -7,6 +7,7 @@
 //
 
 #import "AddonsTableViewController.h"
+#import "AddonDownloadsTableViewController.h"
 #import "Addon.h"
 #import "Addons.h"
 
@@ -22,8 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"My Warcraft Addon Downloads";
     
     [self.refreshControl addTarget:self
                             action:@selector(refresh:)
@@ -72,20 +71,21 @@
     Addon *addon = [[self.addons2 allAddons] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString
                            stringWithFormat:@"%@ - %@",
-                           addon.addonName,
-                           addon.addonTotalDownloads ?: @"..."];
+                           addon.name,
+                           addon.currentDownloadCount ?: @"..."];
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"addonDetail"]) {
+        AddonDownloadsTableViewController *destination = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        destination.addon = [[self.addons2 allAddons] objectAtIndex:indexPath.row];
+    }
 }
-*/
 
 - (IBAction)refresh:(UIRefreshControl *)sender {
     sender.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];

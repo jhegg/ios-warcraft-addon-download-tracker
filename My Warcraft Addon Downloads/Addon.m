@@ -11,7 +11,7 @@
 @implementation Addon
 
 - (BOOL)isEqual:(Addon *)other {
-    return [self.addonName isEqualToString:other.addonName];
+    return [self.name isEqualToString:other.name];
 }
 
 @end
