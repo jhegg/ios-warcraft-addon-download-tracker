@@ -91,19 +91,32 @@
                                     options:0
                                     error:NULL];
     NSArray *downloads = [addonsFromJson valueForKey:@"downloads"];
-    NSNumber *maxCount = [self getMaxCount:downloads];
-    [self updateAddonDownloadCount:maxCount withDownloadHistory:downloads withAddonName:addonName];
+    NSArray *downloadsSortedByDate = [self sortByDate:downloads];
+    NSNumber *maxCount = [[downloadsSortedByDate firstObject] valueForKey:@"count"];
+    [self updateAddonDownloadCount:maxCount
+               withDownloadHistory:downloadsSortedByDate
+                     withAddonName:addonName];
 }
 
-- (NSNumber *)getMaxCount:(NSArray *)downloads {
-    NSNumber *max = [[NSNumber alloc] initWithInt:0];
+- (NSArray *)sortByDate:(NSArray *)downloads {
+    NSDateFormatter *formatter = [self buildDateFormatter];
+    NSMutableArray *downloadsWithRealDates = [[NSMutableArray alloc] initWithCapacity:downloads.count];
     for (id object in downloads) {
-        NSNumber *count = [object objectForKey:@"count"];
-        if (count > max) {
-            max = count;
-        }
+        NSDate *date = [formatter dateFromString:[object valueForKey:@"timestamp"]];
+        NSNumber *count = [object valueForKey:@"count"];
+        NSDictionary *downloadData = [[NSDictionary alloc] initWithObjects:@[date, count] forKeys:@[@"timestamp", @"count"]];
+        [downloadsWithRealDates addObject:downloadData];
     }
-    return max;
+    NSSortDescriptor *sortByDate = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
+    return [downloadsWithRealDates sortedArrayUsingDescriptors:@[sortByDate]];
+}
+
+- (NSDateFormatter *)buildDateFormatter {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUsPosixLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUsPosixLocale];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    return formatter;
 }
 
 - (void)updateAddonDownloadCount:(NSNumber *)count withDownloadHistory:(NSArray *)downloads withAddonName:(NSString *)addonName {
