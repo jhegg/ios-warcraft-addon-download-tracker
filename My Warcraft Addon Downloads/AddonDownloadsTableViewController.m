@@ -10,6 +10,8 @@
 
 @interface AddonDownloadsTableViewController ()
 
+@property NSDateFormatter *dateFormatter;
+
 @end
 
 @implementation AddonDownloadsTableViewController
@@ -17,17 +19,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.addon.name;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.dateFormatter = [self buildDateFormatter];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (NSDateFormatter *)buildDateFormatter {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUsPosixLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUsPosixLocale];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterMediumStyle];
+    return formatter;
 }
 
 #pragma mark - Table view data source
@@ -42,50 +47,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
-    
     NSDate *date = [[[self.addon downloadHistory] objectAtIndex:indexPath.row] objectForKey:@"timestamp"];
     NSNumber *count = [[[self.addon downloadHistory] objectAtIndex:indexPath.row] objectForKey:@"count"];
-    cell.textLabel.text = [NSString
-                           stringWithFormat:@"%@ - %@",
-                           date,
-                           count];
-    
+    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:date];
+    cell.textLabel.text = count.stringValue;
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
