@@ -12,6 +12,7 @@
 
 @property NSString *name;
 @property NSNumber *currentDownloadCount;
+@property NSArray *downloadHistory;
 
 - (BOOL)isEqual:(Addon *)other;
 

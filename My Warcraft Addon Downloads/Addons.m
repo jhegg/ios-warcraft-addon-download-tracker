@@ -91,20 +91,26 @@
                                     options:0
                                     error:NULL];
     NSArray *downloads = [addonsFromJson valueForKey:@"downloads"];
-    NSArray *sortedCounts = [downloads sortedArrayUsingComparator:^(id obj1, id obj2) {
-        NSNumber *first = @([[obj1 objectForKey:@"count"] intValue]);
-        NSNumber *second = @([[obj2 objectForKey:@"count"] intValue]);
-        return [first compare:second];
-    }];
-    
-    NSNumber *maxCount = @([[[sortedCounts lastObject] objectForKey:@"count"] intValue]);
-    [self updateAddonDownloadCount:maxCount addonName:addonName];
+    NSNumber *maxCount = [self getMaxCount:downloads];
+    [self updateAddonDownloadCount:maxCount withDownloadHistory:downloads withAddonName:addonName];
 }
 
-- (void)updateAddonDownloadCount:(NSNumber *)count addonName:(NSString *)addonName {
+- (NSNumber *)getMaxCount:(NSArray *)downloads {
+    NSNumber *max = [[NSNumber alloc] initWithInt:0];
+    for (id object in downloads) {
+        NSNumber *count = [object objectForKey:@"count"];
+        if (count > max) {
+            max = count;
+        }
+    }
+    return max;
+}
+
+- (void)updateAddonDownloadCount:(NSNumber *)count withDownloadHistory:(NSArray *)downloads withAddonName:(NSString *)addonName {
     for (Addon *addon in _addons) {
         if ([addon.name isEqualToString:addonName]) {
             addon.currentDownloadCount = count;
+            addon.downloadHistory = downloads;
             [self.delegate refreshTable];
             return;
         }
@@ -113,7 +119,7 @@
 
 - (NSArray *)allAddons {
     NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"addonName"
+                                        initWithKey:@"name"
                                         ascending:YES
                                         selector:@selector(localizedCaseInsensitiveCompare:)];
     return [self.addons sortedArrayUsingDescriptors:[NSArray arrayWithObjects:nameDescriptor, nil]];
