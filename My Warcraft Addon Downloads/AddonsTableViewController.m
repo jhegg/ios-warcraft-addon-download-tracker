@@ -7,7 +7,7 @@
 //
 
 #import "AddonsTableViewController.h"
-#import "AddonDetailViewController.h"
+#import "AddonDownloadsTableViewController.h"
 #import "Addon.h"
 #import "Addons.h"
 
@@ -81,7 +81,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"addonDetail"]) {
-        AddonDetailViewController *destination = [segue destinationViewController];
+        AddonDownloadsTableViewController *destination = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         destination.addon = [[self.addons2 allAddons] objectAtIndex:indexPath.row];
     }
