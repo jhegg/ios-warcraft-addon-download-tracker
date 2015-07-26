@@ -10,7 +10,7 @@
 
 @interface Addon : NSObject
 
-@property NSString *addonName;
+@property NSString *name;
 @property NSNumber *addonTotalDownloads;
 
 - (BOOL)isEqual:(Addon *)other;

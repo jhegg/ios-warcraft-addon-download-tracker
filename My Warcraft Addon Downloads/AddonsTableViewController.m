@@ -71,7 +71,7 @@
     Addon *addon = [[self.addons2 allAddons] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString
                            stringWithFormat:@"%@ - %@",
-                           addon.addonName,
+                           addon.name,
                            addon.addonTotalDownloads ?: @"..."];
     return cell;
 }

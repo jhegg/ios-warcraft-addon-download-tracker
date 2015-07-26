@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = self.addon.addonName;
+    self.title = self.addon.name;
 }
 
 @end

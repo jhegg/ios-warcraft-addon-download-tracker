@@ -51,7 +51,7 @@
 
 - (void)processAddonFromJson:(NSString *)addonName {
     for (Addon *addon in self.addons) {
-        if ([addon.addonName isEqualToString:addonName]) {
+        if ([addon.name isEqualToString:addonName]) {
             [self updateAddon:addon];
             return;
         }
@@ -62,14 +62,14 @@
 
 - (void)createAddon:(NSString *)addonName {
     Addon *addon = [[Addon alloc] init];
-    addon.addonName = addonName;
+    addon.name = addonName;
     [self queryDownloadCountForAddon:addonName];
     [self.addons addObject:addon];
     self.count = self.addons.count;
 }
 
 - (void)updateAddon:(Addon *)addon {
-    [self queryDownloadCountForAddon:addon.addonName];
+    [self queryDownloadCountForAddon:addon.name];
 }
 
 - (void)queryDownloadCountForAddon:(NSString *)addonName {
@@ -103,7 +103,7 @@
 
 - (void)updateAddonDownloadCount:(NSNumber *)count addonName:(NSString *)addonName {
     for (Addon *addon in _addons) {
-        if ([addon.addonName isEqualToString:addonName]) {
+        if ([addon.name isEqualToString:addonName]) {
             addon.addonTotalDownloads = count;
             [self.delegate refreshTable];
             return;
