@@ -72,7 +72,7 @@
     cell.textLabel.text = [NSString
                            stringWithFormat:@"%@ - %@",
                            addon.name,
-                           addon.addonTotalDownloads ?: @"..."];
+                           addon.currentDownloadCount ?: @"..."];
     return cell;
 }
 

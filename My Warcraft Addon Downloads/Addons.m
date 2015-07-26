@@ -104,7 +104,7 @@
 - (void)updateAddonDownloadCount:(NSNumber *)count addonName:(NSString *)addonName {
     for (Addon *addon in _addons) {
         if ([addon.name isEqualToString:addonName]) {
-            addon.addonTotalDownloads = count;
+            addon.currentDownloadCount = count;
             [self.delegate refreshTable];
             return;
         }
