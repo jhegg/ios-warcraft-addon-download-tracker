@@ -69,10 +69,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     Addon *addon = [[self.addons allAddons] objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString
-                           stringWithFormat:@"%@ - %@",
-                           addon.name,
-                           addon.currentDownloadCount ?: @"..."];
+    cell.textLabel.text = addon.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", addon.currentDownloadCount ?: @"..."];
     return cell;
 }
 
