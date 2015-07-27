@@ -45,13 +45,28 @@
     return self.addon.downloadHistory.count;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Downloads (+Change)";
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     NSDate *date = [[[self.addon downloadHistory] objectAtIndex:indexPath.row] objectForKey:@"timestamp"];
-    NSNumber *count = [[[self.addon downloadHistory] objectAtIndex:indexPath.row] objectForKey:@"count"];
     cell.detailTextLabel.text = [self.dateFormatter stringFromDate:date];
-    cell.textLabel.text = count.stringValue;
+    cell.textLabel.text = [self getTitleTextForRowAtIndexPath:indexPath];
     return cell;
+}
+
+- (NSString *)getTitleTextForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNumber *count = [[[self.addon downloadHistory] objectAtIndex:indexPath.row] objectForKey:@"count"];
+    NSNumber *delta = [[NSNumber alloc] initWithInt:0];
+    if (indexPath.row < [self.addon downloadHistory].count) {
+        NSDictionary *previous = [[self.addon downloadHistory] objectAtIndex:(indexPath.row + 1)];
+        NSNumber *previousCount = [previous objectForKey:@"count"];
+        delta = [[NSNumber alloc] initWithInt:(count.intValue - previousCount.intValue)];
+    }
+    
+    return [NSString stringWithFormat:@"%d (+%d)", count.intValue, delta.intValue];
 }
 
 

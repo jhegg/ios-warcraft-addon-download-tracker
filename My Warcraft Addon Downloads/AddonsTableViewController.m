@@ -13,7 +13,7 @@
 
 @interface AddonsTableViewController ()
 
-@property Addons *addons2;
+@property Addons *addons;
 
 - (IBAction)refresh:(UIRefreshControl *)sender;
 
@@ -28,8 +28,8 @@
                             action:@selector(refresh:)
                   forControlEvents:UIControlEventValueChanged];
     
-    self.addons2 = [[Addons alloc] init];
-    self.addons2.delegate = self;
+    self.addons = [[Addons alloc] init];
+    self.addons.delegate = self;
     
     [self refresh:self.refreshControl];
 }
@@ -39,7 +39,7 @@
 }
 
 - (IBAction)updateAddons:(void (^)(void))handler {
-    [self.addons2 updateAddons:^{
+    [self.addons updateAddons:^{
         [self.tableView reloadData];
         handler();
     }];
@@ -52,7 +52,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.addons2 && self.addons2.count > 0) {
+    if (self.addons && self.addons.count > 0) {
         tableView.backgroundView = nil;
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return 1;
@@ -63,12 +63,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.addons2.count;
+    return self.addons.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
-    Addon *addon = [[self.addons2 allAddons] objectAtIndex:indexPath.row];
+    Addon *addon = [[self.addons allAddons] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString
                            stringWithFormat:@"%@ - %@",
                            addon.name,
@@ -83,7 +83,7 @@
     if ([segue.identifier isEqualToString:@"addonDetail"]) {
         AddonDownloadsTableViewController *destination = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        destination.addon = [[self.addons2 allAddons] objectAtIndex:indexPath.row];
+        destination.addon = [[self.addons allAddons] objectAtIndex:indexPath.row];
     }
 }
 
