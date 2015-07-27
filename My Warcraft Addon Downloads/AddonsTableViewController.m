@@ -70,10 +70,24 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     Addon *addon = [[self.addons allAddons] objectAtIndex:indexPath.row];
     cell.textLabel.text = addon.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", addon.currentDownloadCount ?: @"..."];
+    cell.detailTextLabel.text = [self getDownloadCountTextForAddon:addon];
     return cell;
 }
 
+- (NSString *)getDownloadCountTextForAddon:(Addon *)addon {
+    if (!addon.currentDownloadCount) {
+        return @"...";
+    }
+    
+    NSNumber *count = [[[addon downloadHistory] objectAtIndex:0] objectForKey:@"count"];
+    NSNumber *delta = [[NSNumber alloc] initWithInt:0];
+    if ([addon downloadHistory].count > 1) {
+        NSNumber *previousCount = [[[addon downloadHistory] objectAtIndex:1] objectForKey:@"count"];
+        delta = [[NSNumber alloc] initWithInt:(count.intValue - previousCount.intValue)];
+    }
+    
+    return [NSString stringWithFormat:@"%d (+%d)", count.intValue, delta.intValue];
+}
 
 #pragma mark - Navigation
 
