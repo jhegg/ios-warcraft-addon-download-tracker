@@ -60,7 +60,7 @@
 - (NSString *)getTitleTextForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSNumber *count = [[[self.addon downloadHistory] objectAtIndex:indexPath.row] objectForKey:@"count"];
     NSNumber *delta = [[NSNumber alloc] initWithInt:0];
-    if (indexPath.row < [self.addon downloadHistory].count) {
+    if (indexPath.row + 1 < [self.addon downloadHistory].count) {
         NSDictionary *previous = [[self.addon downloadHistory] objectAtIndex:(indexPath.row + 1)];
         NSNumber *previousCount = [previous objectForKey:@"count"];
         delta = [[NSNumber alloc] initWithInt:(count.intValue - previousCount.intValue)];
