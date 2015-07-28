@@ -18,7 +18,8 @@
 		03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CA51B6096DE007E51B9 /* AddonsTableViewController.m */; };
 		03672CB01B6340A4007E51B9 /* Addons.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672CAF1B6340A4007E51B9 /* Addons.m */; };
 		038C5F961B6584CC0027E915 /* AddonDownloadsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C5F951B6584CC0027E915 /* AddonDownloadsTableViewController.m */; };
-		FFD9BC817C2F0CB68B1A407B /* libPods-My Warcraft Addon Downloads.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC494D1EE64539E716A7A196 /* libPods-My Warcraft Addon Downloads.a */; };
+		03B985BE1B6726C7007671BC /* AddonGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B985BD1B6726C7007671BC /* AddonGraphViewController.m */; };
+		5E5E11FD43FE19CE60F24202 /* Pods_My_Warcraft_Addon_Downloads.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E86BEBCEDA00B450036907 /* Pods_My_Warcraft_Addon_Downloads.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +54,10 @@
 		03672CB11B641B24007E51B9 /* AddonsTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddonsTableViewControllerDelegate.h; sourceTree = "<group>"; };
 		038C5F941B6584CC0027E915 /* AddonDownloadsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddonDownloadsTableViewController.h; sourceTree = "<group>"; };
 		038C5F951B6584CC0027E915 /* AddonDownloadsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddonDownloadsTableViewController.m; sourceTree = "<group>"; };
+		03B985BC1B6726C7007671BC /* AddonGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddonGraphViewController.h; sourceTree = "<group>"; };
+		03B985BD1B6726C7007671BC /* AddonGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddonGraphViewController.m; sourceTree = "<group>"; };
 		470C895EFA70584833B3AB81 /* Pods-My Warcraft Addon Downloads.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Warcraft Addon Downloads.debug.xcconfig"; path = "Pods/Target Support Files/Pods-My Warcraft Addon Downloads/Pods-My Warcraft Addon Downloads.debug.xcconfig"; sourceTree = "<group>"; };
-		CC494D1EE64539E716A7A196 /* libPods-My Warcraft Addon Downloads.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-My Warcraft Addon Downloads.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5E86BEBCEDA00B450036907 /* Pods_My_Warcraft_Addon_Downloads.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_Warcraft_Addon_Downloads.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D88F2D7470F463B3B52D27 /* Pods-My Warcraft Addon Downloads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Warcraft Addon Downloads.release.xcconfig"; path = "Pods/Target Support Files/Pods-My Warcraft Addon Downloads/Pods-My Warcraft Addon Downloads.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD9BC817C2F0CB68B1A407B /* libPods-My Warcraft Addon Downloads.a in Frameworks */,
+				5E5E11FD43FE19CE60F24202 /* Pods_My_Warcraft_Addon_Downloads.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +107,8 @@
 				03672CA31B6096DE007E51B9 /* Addon.m */,
 				038C5F941B6584CC0027E915 /* AddonDownloadsTableViewController.h */,
 				038C5F951B6584CC0027E915 /* AddonDownloadsTableViewController.m */,
+				03B985BC1B6726C7007671BC /* AddonGraphViewController.h */,
+				03B985BD1B6726C7007671BC /* AddonGraphViewController.m */,
 				03672CAE1B6340A4007E51B9 /* Addons.h */,
 				03672CAF1B6340A4007E51B9 /* Addons.m */,
 				03672CA41B6096DE007E51B9 /* AddonsTableViewController.h */,
@@ -158,7 +163,7 @@
 		FE407C782387A418E054EF8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CC494D1EE64539E716A7A196 /* libPods-My Warcraft Addon Downloads.a */,
+				A5E86BEBCEDA00B450036907 /* Pods_My_Warcraft_Addon_Downloads.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				03672C731B609535007E51B9 /* Frameworks */,
 				03672C741B609535007E51B9 /* Resources */,
 				298EA4AEC0F65AE5B476B656 /* Copy Pods Resources */,
+				600DC98909CC88D2CB09A892 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -276,6 +282,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-My Warcraft Addon Downloads/Pods-My Warcraft Addon Downloads-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		600DC98909CC88D2CB09A892 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-My Warcraft Addon Downloads/Pods-My Warcraft Addon Downloads-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7601936A551DAE9C4370FBF3 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -302,6 +323,7 @@
 				03672C7F1B609535007E51B9 /* AppDelegate.m in Sources */,
 				03672CA61B6096DE007E51B9 /* Addon.m in Sources */,
 				03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */,
+				03B985BE1B6726C7007671BC /* AddonGraphViewController.m in Sources */,
 				03672C821B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */,
 				038C5F961B6584CC0027E915 /* AddonDownloadsTableViewController.m in Sources */,
 				03672C7C1B609535007E51B9 /* main.m in Sources */,

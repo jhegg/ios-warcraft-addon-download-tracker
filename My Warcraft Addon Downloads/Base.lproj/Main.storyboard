@@ -88,9 +88,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="AdF-YM-x39">
-                        <barButtonItem key="rightBarButtonItem" title="Graph" style="plain" id="QTr-D4-3dR">
+                        <barButtonItem key="rightBarButtonItem" title="Graph" style="done" id="QTr-D4-3dR">
                             <connections>
-                                <segue destination="lQc-KX-8nw" kind="show" id="Of5-NZ-qtD"/>
+                                <segue destination="lQc-KX-8nw" kind="show" identifier="showGraph" id="Of5-NZ-qtD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -99,19 +99,36 @@
             </objects>
             <point key="canvasLocation" x="1548" y="285"/>
         </scene>
-        <!--View Controller-->
+        <!--Addon Graph View Controller-->
         <scene sceneID="JNR-fZ-A7b">
             <objects>
-                <viewController id="lQc-KX-8nw" sceneMemberID="viewController">
+                <viewController id="lQc-KX-8nw" customClass="AddonGraphViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pj1-rl-RYg"/>
                         <viewControllerLayoutGuide type="bottom" id="Dma-OS-mFe"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TS2-jq-pVF">
+                    <view key="view" contentMode="scaleToFill" id="TS2-jq-pVF" customClass="BEMSimpleLineGraphView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableYAxisLabel" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableXAxisLabel" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableBezierCurve" value="NO"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="sizePoint">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="dataSource" destination="lQc-KX-8nw" id="Sxr-jR-Sfc"/>
+                            <outlet property="delegate" destination="lQc-KX-8nw" id="qlf-Lh-zF5"/>
+                        </connections>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="graph" destination="TS2-jq-pVF" id="3cH-on-M5Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHg-0O-HRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
