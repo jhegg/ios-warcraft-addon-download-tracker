@@ -93,7 +93,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"addonDetail"]) {
-        AddonDownloadsTableViewController *destination = [segue destinationViewController];
+        AddonDownloadsTableViewController *destination = (AddonDownloadsTableViewController *)[[segue destinationViewController] topViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         destination.addon = [[self.addons allAddons] objectAtIndex:indexPath.row];
     }

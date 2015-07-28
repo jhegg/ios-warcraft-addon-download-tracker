@@ -6,43 +6,229 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		022BB75A922726E5EA0428438D0653A1 /* BEMAverageLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CB178755544A0AD3EEC315B9775F3 /* BEMAverageLine.m */; };
+		0C697E3832CC05AAFCF8766459C15594 /* BEMSimpleLineGraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A9A66BB2CB1559E6C17065D6F0C1EFA /* BEMSimpleLineGraphView.h */; };
+		0E4D80903B4300BF05BE822DA0ACEABF /* BEMLine.h in Headers */ = {isa = PBXBuildFile; fileRef = ED96A8585C1D1553567E36C6713C3439 /* BEMLine.h */; };
+		1D9F0455BB44CABA84ED90BDB4BE5E1A /* BEMSimpleLineGraph-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19C752ED93320D19D7274AC5B9957D /* BEMSimpleLineGraph-dummy.m */; };
+		240D5D1BEAFF29930A650C74B7461DB1 /* BEMAverageLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C8FC916955C7371E39D8DFCF5380861 /* BEMAverageLine.h */; };
+		53ECE2046540FC03E65D22CF36BCEB2F /* Pods-My Warcraft Addon Downloads-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 251448CF66EEA81F848B03CB637F0E9A /* Pods-My Warcraft Addon Downloads-dummy.m */; };
+		7782A19C2A083269E4A78F77F35BF31E /* BEMSimpleLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04588AE8E0BFAF2A255FBD12C0591053 /* BEMSimpleLineGraphView.m */; };
+		840D2B0FC9B5E1F966758343C28E083A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0781DAA7D62A39ED9D704D147474AFE /* Foundation.framework */; };
+		92BD87001C8232F5C98317B5B0FC65E8 /* BEMPermanentPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 553D4593DC11C4BA0A5CB32326F95945 /* BEMPermanentPopupView.h */; };
+		A72843625F968764F8B9C957927323EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0781DAA7D62A39ED9D704D147474AFE /* Foundation.framework */; };
+		AF7053CCBE1074DFDDA9D9E5CEAB0E68 /* BEMLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2931B4455E54580BCEE1EEFC9532AEDD /* BEMLine.m */; };
+		B8D2FBA5C849043436920BE76A5D04A7 /* BEMCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = F227E29428C175BBCE422DEE89DB5AEC /* BEMCircle.m */; };
+		B94378E734ACE4BA65CF54B099A263D7 /* BEMCircle.h in Headers */ = {isa = PBXBuildFile; fileRef = AA869FA3DEB7B67471B4963FD92305CE /* BEMCircle.h */; };
+		D9EB4BBF03771387B080730D87B5CBB0 /* BEMPermanentPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 802B313EDCEA84543135B0831E0B6A6B /* BEMPermanentPopupView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B62C167B907E262C8082484DFDF415A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F3D445D3B312F6EDAA4B2A55436FFCF;
+			remoteInfo = BEMSimpleLineGraph;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		04588AE8E0BFAF2A255FBD12C0591053 /* BEMSimpleLineGraphView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMSimpleLineGraphView.m; path = Classes/BEMSimpleLineGraphView.m; sourceTree = "<group>"; };
+		0B5D0821CEC2AEA1626A7BF52913DC9B /* BEMSimpleLineGraph.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BEMSimpleLineGraph.xcconfig; sourceTree = "<group>"; };
+		1CD4B94B6A8306003D139ECFBD47B6E0 /* libPods-My Warcraft Addon Downloads.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-My Warcraft Addon Downloads.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		251448CF66EEA81F848B03CB637F0E9A /* Pods-My Warcraft Addon Downloads-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-My Warcraft Addon Downloads-dummy.m"; sourceTree = "<group>"; };
+		2931B4455E54580BCEE1EEFC9532AEDD /* BEMLine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMLine.m; path = Classes/BEMLine.m; sourceTree = "<group>"; };
+		2C8FC916955C7371E39D8DFCF5380861 /* BEMAverageLine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMAverageLine.h; path = Classes/BEMAverageLine.h; sourceTree = "<group>"; };
+		3484810F53103FAEC5CCF0069BA4E0B1 /* Pods-My Warcraft Addon Downloads-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-My Warcraft Addon Downloads-acknowledgements.plist"; sourceTree = "<group>"; };
+		4A9A66BB2CB1559E6C17065D6F0C1EFA /* BEMSimpleLineGraphView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMSimpleLineGraphView.h; path = Classes/BEMSimpleLineGraphView.h; sourceTree = "<group>"; };
+		553D4593DC11C4BA0A5CB32326F95945 /* BEMPermanentPopupView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMPermanentPopupView.h; path = Classes/BEMPermanentPopupView.h; sourceTree = "<group>"; };
+		6F19C752ED93320D19D7274AC5B9957D /* BEMSimpleLineGraph-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BEMSimpleLineGraph-dummy.m"; sourceTree = "<group>"; };
+		802B313EDCEA84543135B0831E0B6A6B /* BEMPermanentPopupView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMPermanentPopupView.m; path = Classes/BEMPermanentPopupView.m; sourceTree = "<group>"; };
+		802CB178755544A0AD3EEC315B9775F3 /* BEMAverageLine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMAverageLine.m; path = Classes/BEMAverageLine.m; sourceTree = "<group>"; };
+		81FB3BA20D1F05BAF8681DED22C8BBDD /* Pods-My Warcraft Addon Downloads-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-My Warcraft Addon Downloads-resources.sh"; sourceTree = "<group>"; };
+		863D9C216AF749ED1CB03F6439BE41E9 /* Pods-My Warcraft Addon Downloads.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-My Warcraft Addon Downloads.debug.xcconfig"; sourceTree = "<group>"; };
+		910B2F8BC4CC22CC226C145FCFACD75A /* BEMSimpleLineGraph-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "BEMSimpleLineGraph-Private.xcconfig"; sourceTree = "<group>"; };
+		AA869FA3DEB7B67471B4963FD92305CE /* BEMCircle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMCircle.h; path = Classes/BEMCircle.h; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D1CE23663D9528D8BE4F4A9E01B9419D /* BEMSimpleLineGraph-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BEMSimpleLineGraph-prefix.pch"; sourceTree = "<group>"; };
+		D2DABB5F61A4C06EDF66C981AA6392B8 /* libBEMSimpleLineGraph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBEMSimpleLineGraph.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC1267AB23AB08538FB9E3E9778C8124 /* Pods-My Warcraft Addon Downloads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-My Warcraft Addon Downloads.release.xcconfig"; sourceTree = "<group>"; };
+		ED96A8585C1D1553567E36C6713C3439 /* BEMLine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMLine.h; path = Classes/BEMLine.h; sourceTree = "<group>"; };
+		F0781DAA7D62A39ED9D704D147474AFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F227E29428C175BBCE422DEE89DB5AEC /* BEMCircle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMCircle.m; path = Classes/BEMCircle.m; sourceTree = "<group>"; };
+		F39F4914A44BDD044561572F5F836F9A /* Pods-My Warcraft Addon Downloads-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-My Warcraft Addon Downloads-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		4BC9B16D1DCA942C013364E4F0E1F2ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A72843625F968764F8B9C957927323EC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2511B1D95DDB03C912C67E5554B1F71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840D2B0FC9B5E1F966758343C28E083A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
-		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+		096263BC3A4B2A4718051FB7ECCE0994 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				B1CE4F546136BF7AF01709F7E4A8A14C /* Pods-My Warcraft Addon Downloads */,
 			);
-			name = Frameworks;
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F0781DAA7D62A39ED9D704D147474AFE /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		794744D2F091A7C11D73AAB7CBE1A255 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEF645868B526D392A277A3DB4828E90 /* BEMSimpleLineGraph */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				794744D2F091A7C11D73AAB7CBE1A255 /* Pods */,
 				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
-				F6CCA5D896907CE7506C37FD31FC265A /* Targets Support Files */,
+				096263BC3A4B2A4718051FB7ECCE0994 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		A820693413A378FC2FE05C0B2DC78112 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0B5D0821CEC2AEA1626A7BF52913DC9B /* BEMSimpleLineGraph.xcconfig */,
+				910B2F8BC4CC22CC226C145FCFACD75A /* BEMSimpleLineGraph-Private.xcconfig */,
+				6F19C752ED93320D19D7274AC5B9957D /* BEMSimpleLineGraph-dummy.m */,
+				D1CE23663D9528D8BE4F4A9E01B9419D /* BEMSimpleLineGraph-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BEMSimpleLineGraph";
+			sourceTree = "<group>";
+		};
+		B1CE4F546136BF7AF01709F7E4A8A14C /* Pods-My Warcraft Addon Downloads */ = {
+			isa = PBXGroup;
+			children = (
+				F39F4914A44BDD044561572F5F836F9A /* Pods-My Warcraft Addon Downloads-acknowledgements.markdown */,
+				3484810F53103FAEC5CCF0069BA4E0B1 /* Pods-My Warcraft Addon Downloads-acknowledgements.plist */,
+				251448CF66EEA81F848B03CB637F0E9A /* Pods-My Warcraft Addon Downloads-dummy.m */,
+				81FB3BA20D1F05BAF8681DED22C8BBDD /* Pods-My Warcraft Addon Downloads-resources.sh */,
+				863D9C216AF749ED1CB03F6439BE41E9 /* Pods-My Warcraft Addon Downloads.debug.xcconfig */,
+				DC1267AB23AB08538FB9E3E9778C8124 /* Pods-My Warcraft Addon Downloads.release.xcconfig */,
+			);
+			name = "Pods-My Warcraft Addon Downloads";
+			path = "Target Support Files/Pods-My Warcraft Addon Downloads";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53F661C0CA7190D2CF05023FB33D61E4 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				D2DABB5F61A4C06EDF66C981AA6392B8 /* libBEMSimpleLineGraph.a */,
+				1CD4B94B6A8306003D139ECFBD47B6E0 /* libPods-My Warcraft Addon Downloads.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F6CCA5D896907CE7506C37FD31FC265A /* Targets Support Files */ = {
+		DEF645868B526D392A277A3DB4828E90 /* BEMSimpleLineGraph */ = {
 			isa = PBXGroup;
 			children = (
+				2C8FC916955C7371E39D8DFCF5380861 /* BEMAverageLine.h */,
+				802CB178755544A0AD3EEC315B9775F3 /* BEMAverageLine.m */,
+				AA869FA3DEB7B67471B4963FD92305CE /* BEMCircle.h */,
+				F227E29428C175BBCE422DEE89DB5AEC /* BEMCircle.m */,
+				ED96A8585C1D1553567E36C6713C3439 /* BEMLine.h */,
+				2931B4455E54580BCEE1EEFC9532AEDD /* BEMLine.m */,
+				553D4593DC11C4BA0A5CB32326F95945 /* BEMPermanentPopupView.h */,
+				802B313EDCEA84543135B0831E0B6A6B /* BEMPermanentPopupView.m */,
+				4A9A66BB2CB1559E6C17065D6F0C1EFA /* BEMSimpleLineGraphView.h */,
+				04588AE8E0BFAF2A255FBD12C0591053 /* BEMSimpleLineGraphView.m */,
+				A820693413A378FC2FE05C0B2DC78112 /* Support Files */,
 			);
-			name = "Targets Support Files";
+			path = BEMSimpleLineGraph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1CE5A45DC802CBCBE05B1F2FD4BDD8BD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				240D5D1BEAFF29930A650C74B7461DB1 /* BEMAverageLine.h in Headers */,
+				B94378E734ACE4BA65CF54B099A263D7 /* BEMCircle.h in Headers */,
+				0E4D80903B4300BF05BE822DA0ACEABF /* BEMLine.h in Headers */,
+				92BD87001C8232F5C98317B5B0FC65E8 /* BEMPermanentPopupView.h in Headers */,
+				0C697E3832CC05AAFCF8766459C15594 /* BEMSimpleLineGraphView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3F3D445D3B312F6EDAA4B2A55436FFCF /* BEMSimpleLineGraph */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B14B6FEE7C7D6FA73CE440FCAE87061A /* Build configuration list for PBXNativeTarget "BEMSimpleLineGraph" */;
+			buildPhases = (
+				02C39228F7E41C72015B73B09E678A47 /* Sources */,
+				B2511B1D95DDB03C912C67E5554B1F71 /* Frameworks */,
+				1CE5A45DC802CBCBE05B1F2FD4BDD8BD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BEMSimpleLineGraph;
+			productName = BEMSimpleLineGraph;
+			productReference = D2DABB5F61A4C06EDF66C981AA6392B8 /* libBEMSimpleLineGraph.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E2BC9194BC1D847761DD0AA193B7D33D /* Pods-My Warcraft Addon Downloads */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68154D1EBB847F42037F163C5C08DC84 /* Build configuration list for PBXNativeTarget "Pods-My Warcraft Addon Downloads" */;
+			buildPhases = (
+				ACCB747A7FB4C9993469E7CA66A0FD68 /* Sources */,
+				4BC9B16D1DCA942C013364E4F0E1F2ED /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C528E3C96F95D2BDAEDEBBDB285C0D4 /* PBXTargetDependency */,
+			);
+			name = "Pods-My Warcraft Addon Downloads";
+			productName = "Pods-My Warcraft Addon Downloads";
+			productReference = 1CD4B94B6A8306003D139ECFBD47B6E0 /* libPods-My Warcraft Addon Downloads.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
@@ -63,11 +249,94 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				3F3D445D3B312F6EDAA4B2A55436FFCF /* BEMSimpleLineGraph */,
+				E2BC9194BC1D847761DD0AA193B7D33D /* Pods-My Warcraft Addon Downloads */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXSourcesBuildPhase section */
+		02C39228F7E41C72015B73B09E678A47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				022BB75A922726E5EA0428438D0653A1 /* BEMAverageLine.m in Sources */,
+				B8D2FBA5C849043436920BE76A5D04A7 /* BEMCircle.m in Sources */,
+				AF7053CCBE1074DFDDA9D9E5CEAB0E68 /* BEMLine.m in Sources */,
+				D9EB4BBF03771387B080730D87B5CBB0 /* BEMPermanentPopupView.m in Sources */,
+				1D9F0455BB44CABA84ED90BDB4BE5E1A /* BEMSimpleLineGraph-dummy.m in Sources */,
+				7782A19C2A083269E4A78F77F35BF31E /* BEMSimpleLineGraphView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACCB747A7FB4C9993469E7CA66A0FD68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53ECE2046540FC03E65D22CF36BCEB2F /* Pods-My Warcraft Addon Downloads-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6C528E3C96F95D2BDAEDEBBDB285C0D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BEMSimpleLineGraph;
+			target = 3F3D445D3B312F6EDAA4B2A55436FFCF /* BEMSimpleLineGraph */;
+			targetProxy = B62C167B907E262C8082484DFDF415A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		05B8C5FA941E47CFBBD0F543FCE35A4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 863D9C216AF749ED1CB03F6439BE41E9 /* Pods-My Warcraft Addon Downloads.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		665CE1022F9256B2374EEC9E308CD57A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC1267AB23AB08538FB9E3E9778C8124 /* Pods-My Warcraft Addon Downloads.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7AEABA5DF3FD86B8E38E4B13636C5171 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 910B2F8BC4CC22CC226C145FCFACD75A /* BEMSimpleLineGraph-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BEMSimpleLineGraph/BEMSimpleLineGraph-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -106,6 +375,22 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
+		};
+		E297FFC2C3AA1E2451433C77E07C0DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 910B2F8BC4CC22CC226C145FCFACD75A /* BEMSimpleLineGraph-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BEMSimpleLineGraph/BEMSimpleLineGraph-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
 		};
 		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -149,6 +434,24 @@
 			buildConfigurations = (
 				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
 				FB45FFD90572718D82AB9092B750F0CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68154D1EBB847F42037F163C5C08DC84 /* Build configuration list for PBXNativeTarget "Pods-My Warcraft Addon Downloads" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05B8C5FA941E47CFBBD0F543FCE35A4B /* Debug */,
+				665CE1022F9256B2374EEC9E308CD57A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B14B6FEE7C7D6FA73CE440FCAE87061A /* Build configuration list for PBXNativeTarget "BEMSimpleLineGraph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AEABA5DF3FD86B8E38E4B13636C5171 /* Debug */,
+				E297FFC2C3AA1E2451433C77E07C0DD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
