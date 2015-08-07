@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eVX-T7-ShK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Addons-->
@@ -107,27 +108,44 @@
                         <viewControllerLayoutGuide type="top" id="pj1-rl-RYg"/>
                         <viewControllerLayoutGuide type="bottom" id="Dma-OS-mFe"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TS2-jq-pVF" customClass="BEMSimpleLineGraphView">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="lW4-Km-p8v">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOO-7Y-hXl" userLabel="graph" customClass="BEMSimpleLineGraphView">
+                                <rect key="frame" x="16" y="52" width="568" height="480"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lQc-KX-8nw" id="1Fl-yE-zq4"/>
+                                    <outlet property="delegate" destination="lQc-KX-8nw" id="REJ-R8-VrA"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-hV-ZUx" userLabel="detailLabel">
+                                <rect key="frame" x="16" y="542" width="568" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8Bw-hP-Zc6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableYAxisLabel" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableXAxisLabel" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableBezierCurve" value="NO"/>
-                            <userDefinedRuntimeAttribute type="number" keyPath="sizePoint">
-                                <real key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                        <connections>
-                            <outlet property="dataSource" destination="lQc-KX-8nw" id="Sxr-jR-Sfc"/>
-                            <outlet property="delegate" destination="lQc-KX-8nw" id="qlf-Lh-zF5"/>
-                        </connections>
+                        <constraints>
+                            <constraint firstItem="Sm6-hV-ZUx" firstAttribute="trailing" secondItem="lW4-Km-p8v" secondAttribute="trailingMargin" id="2gZ-bc-ps1"/>
+                            <constraint firstItem="Sm6-hV-ZUx" firstAttribute="leading" secondItem="lW4-Km-p8v" secondAttribute="leadingMargin" id="9iu-Tx-ygA"/>
+                            <constraint firstItem="Sm6-hV-ZUx" firstAttribute="top" secondItem="iOO-7Y-hXl" secondAttribute="bottom" constant="10" id="I7I-bn-hs1"/>
+                            <constraint firstItem="Dma-OS-mFe" firstAttribute="top" secondItem="Sm6-hV-ZUx" secondAttribute="bottom" constant="8" id="R0Z-vd-EPA"/>
+                            <constraint firstItem="iOO-7Y-hXl" firstAttribute="top" secondItem="pj1-rl-RYg" secondAttribute="bottom" constant="8" id="csb-2k-dII"/>
+                            <constraint firstItem="iOO-7Y-hXl" firstAttribute="leading" secondItem="lW4-Km-p8v" secondAttribute="leadingMargin" id="dm3-F2-isn"/>
+                            <constraint firstItem="Sm6-hV-ZUx" firstAttribute="top" secondItem="iOO-7Y-hXl" secondAttribute="bottom" constant="10" id="tOS-aJ-eCr"/>
+                            <constraint firstItem="iOO-7Y-hXl" firstAttribute="trailing" secondItem="lW4-Km-p8v" secondAttribute="trailingMargin" id="yWM-wT-fkb"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="graph" destination="TS2-jq-pVF" id="3cH-on-M5Z"/>
+                        <outlet property="detailLabel" destination="Sm6-hV-ZUx" id="aLl-BO-JSc"/>
+                        <outlet property="graph" destination="iOO-7Y-hXl" id="Kpr-hx-oKj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHg-0O-HRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
