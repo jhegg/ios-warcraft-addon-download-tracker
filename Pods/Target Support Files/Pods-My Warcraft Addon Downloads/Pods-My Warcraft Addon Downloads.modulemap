@@ -1,0 +1,6 @@
+framework module Pods_My_Warcraft_Addon_Downloads {
+  umbrella header "Pods-My Warcraft Addon Downloads-umbrella.h"
+
+  export *
+  module * { export * }
+}
