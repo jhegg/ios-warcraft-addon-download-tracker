@@ -10,7 +10,8 @@
 
 @interface AddonGraphViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet BEMSimpleLineGraphView *graph;
 @property NSArray *orderedHistory;
 @property NSDateFormatter *detailLabelDateFormatter;
@@ -34,7 +35,8 @@
     _graph.autoScaleYAxis = YES;
     _graph.alwaysDisplayDots = NO;
     
-    _detailLabel.text = @"Touch the graph for details";
+    _dateLabel.text = @"";
+    _countLabel.text = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,7 +95,8 @@
     id dataPoint = [self.orderedHistory objectAtIndex:index];
     NSDate *date = [dataPoint objectForKey:@"timestamp"];
     NSNumber *count = [dataPoint objectForKey:@"count"];
-    self.detailLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.detailLabelDateFormatter stringFromDate:date], count];
+    self.dateLabel.text = [NSString stringWithFormat:@"on %@", [self.detailLabelDateFormatter stringFromDate:date]];
+    self.countLabel.text = [count stringValue];
 }
 
 /*

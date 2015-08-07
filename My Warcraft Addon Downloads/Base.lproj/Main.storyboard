@@ -113,38 +113,61 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOO-7Y-hXl" userLabel="graph" customClass="BEMSimpleLineGraphView">
-                                <rect key="frame" x="16" y="52" width="568" height="480"/>
+                                <rect key="frame" x="16" y="44" width="568" height="488"/>
                                 <connections>
                                     <outlet property="dataSource" destination="lQc-KX-8nw" id="1Fl-yE-zq4"/>
                                     <outlet property="delegate" destination="lQc-KX-8nw" id="REJ-R8-VrA"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-hV-ZUx" userLabel="detailLabel">
-                                <rect key="frame" x="16" y="542" width="568" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="on Sept 22, 2014, 10:23 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-hV-ZUx" userLabel="dateLabel">
+                                <rect key="frame" x="350" y="542" width="250" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8Bw-hP-Zc6"/>
+                                    <constraint firstAttribute="width" constant="250" id="jWe-mg-oGI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYy-9k-eLT" userLabel="countLabel">
+                                <rect key="frame" x="0.0" y="542" width="330" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GlZ-Ua-xow"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.035294117647058823" green="0.37647058823529411" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Sm6-hV-ZUx" firstAttribute="trailing" secondItem="lW4-Km-p8v" secondAttribute="trailingMargin" id="2gZ-bc-ps1"/>
+                            <constraint firstItem="Sm6-hV-ZUx" firstAttribute="leading" secondItem="QYy-9k-eLT" secondAttribute="trailing" constant="86" id="1PV-rn-REP"/>
+                            <constraint firstItem="Sm6-hV-ZUx" firstAttribute="trailing" secondItem="lW4-Km-p8v" secondAttribute="trailingMargin" constant="16" id="2gZ-bc-ps1"/>
                             <constraint firstItem="Sm6-hV-ZUx" firstAttribute="leading" secondItem="lW4-Km-p8v" secondAttribute="leadingMargin" id="9iu-Tx-ygA"/>
+                            <constraint firstItem="QYy-9k-eLT" firstAttribute="leading" secondItem="lW4-Km-p8v" secondAttribute="leadingMargin" constant="-16" id="BHh-s4-Iwg"/>
+                            <constraint firstItem="Sm6-hV-ZUx" firstAttribute="leading" secondItem="QYy-9k-eLT" secondAttribute="trailing" constant="20" id="CWt-bq-6YX"/>
                             <constraint firstItem="Sm6-hV-ZUx" firstAttribute="top" secondItem="iOO-7Y-hXl" secondAttribute="bottom" constant="10" id="I7I-bn-hs1"/>
+                            <constraint firstItem="Dma-OS-mFe" firstAttribute="top" secondItem="QYy-9k-eLT" secondAttribute="bottom" constant="8" id="NcZ-ZA-h6P"/>
                             <constraint firstItem="Dma-OS-mFe" firstAttribute="top" secondItem="Sm6-hV-ZUx" secondAttribute="bottom" constant="8" id="R0Z-vd-EPA"/>
-                            <constraint firstItem="iOO-7Y-hXl" firstAttribute="top" secondItem="pj1-rl-RYg" secondAttribute="bottom" constant="8" id="csb-2k-dII"/>
+                            <constraint firstItem="iOO-7Y-hXl" firstAttribute="top" secondItem="pj1-rl-RYg" secondAttribute="bottom" id="csb-2k-dII"/>
+                            <constraint firstItem="QYy-9k-eLT" firstAttribute="top" secondItem="iOO-7Y-hXl" secondAttribute="bottom" constant="10" id="dFk-vb-4r4"/>
                             <constraint firstItem="iOO-7Y-hXl" firstAttribute="leading" secondItem="lW4-Km-p8v" secondAttribute="leadingMargin" id="dm3-F2-isn"/>
                             <constraint firstItem="Sm6-hV-ZUx" firstAttribute="top" secondItem="iOO-7Y-hXl" secondAttribute="bottom" constant="10" id="tOS-aJ-eCr"/>
                             <constraint firstItem="iOO-7Y-hXl" firstAttribute="trailing" secondItem="lW4-Km-p8v" secondAttribute="trailingMargin" id="yWM-wT-fkb"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1PV-rn-REP"/>
+                                <exclude reference="9iu-Tx-ygA"/>
+                                <exclude reference="I7I-bn-hs1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="detailLabel" destination="Sm6-hV-ZUx" id="aLl-BO-JSc"/>
+                        <outlet property="countLabel" destination="QYy-9k-eLT" id="lGi-Dp-69H"/>
+                        <outlet property="dateLabel" destination="Sm6-hV-ZUx" id="L29-cQ-zDq"/>
                         <outlet property="graph" destination="iOO-7Y-hXl" id="Kpr-hx-oKj"/>
                     </connections>
                 </viewController>
