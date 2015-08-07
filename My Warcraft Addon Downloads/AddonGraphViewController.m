@@ -35,8 +35,7 @@
     _graph.autoScaleYAxis = YES;
     _graph.alwaysDisplayDots = NO;
     
-    _dateLabel.text = @"";
-    _countLabel.text = @"";
+    [self lineGraph:_graph didTouchGraphWithClosestIndex:(_addon.downloadHistory.count - 1)];
 }
 
 - (void)didReceiveMemoryWarning {
