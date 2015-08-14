@@ -171,6 +171,13 @@
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     SettingsViewController *source = [segue sourceViewController];
     
+    [self createOrUpdateSettingsUrlInCoreData:source.url];
+    
+    self.url = source.url;
+    [self updateViewBasedOnUrl];
+}
+
+- (void)createOrUpdateSettingsUrlInCoreData:(NSURL *)url {
     NSManagedObjectContext *context = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[NSEntityDescription entityForName:@"Settings" inManagedObjectContext:context]];
@@ -182,21 +189,18 @@
         NSLog(@"Fetched %lu settings entries", (unsigned long)fetchedObjects.count);
         if (fetchedObjects.count == 0) {
             NSManagedObject *settings = [NSEntityDescription insertNewObjectForEntityForName:@"Settings" inManagedObjectContext:context];
-            [settings setValue:source.url.absoluteString forKey:@"url"];
-            NSLog(@"Creating URL with: %@", source.url.absoluteString);
+            [settings setValue:url.absoluteString forKey:@"url"];
+            NSLog(@"Creating URL with: %@", url.absoluteString);
         } else {
             NSManagedObject *settings = [fetchedObjects firstObject];
-            [settings setValue:source.url.absoluteString forKey:@"url"];
-            NSLog(@"Updating URL with: %@", source.url.absoluteString);
+            [settings setValue:url.absoluteString forKey:@"url"];
+            NSLog(@"Updating URL with: %@", url.absoluteString);
         }
         NSError *error;
         if (![context save:&error]) {
             NSLog(@"Unable to save URL: %@", [error localizedDescription]);
         }
     }
-    
-    self.url = source.url;
-    [self updateViewBasedOnUrl];
 }
 
 @end
