@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031FEB6D1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 031FEB6B1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld */; };
 		03672C7C1B609535007E51B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672C7B1B609535007E51B9 /* main.m */; };
 		03672C7F1B609535007E51B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672C7E1B609535007E51B9 /* AppDelegate.m */; };
-		03672C821B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03672C801B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld */; };
 		03672C881B609535007E51B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03672C861B609535007E51B9 /* Main.storyboard */; };
 		03672C8A1B609535007E51B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03672C891B609535007E51B9 /* Images.xcassets */; };
 		03672C8D1B609535007E51B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03672C8B1B609535007E51B9 /* LaunchScreen.xib */; };
@@ -34,12 +34,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		031FEB6C1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = My_Warcraft_Addon_Downloads.xcdatamodel; sourceTree = "<group>"; };
 		03672C761B609535007E51B9 /* My Warcraft Addon Downloads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Warcraft Addon Downloads.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03672C7A1B609535007E51B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03672C7B1B609535007E51B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03672C7D1B609535007E51B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		03672C7E1B609535007E51B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		03672C811B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = My_Warcraft_Addon_Downloads.xcdatamodel; sourceTree = "<group>"; };
 		03672C871B609535007E51B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03672C891B609535007E51B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		03672C8C1B609535007E51B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 				03672C891B609535007E51B9 /* Images.xcassets */,
 				03672C8B1B609535007E51B9 /* LaunchScreen.xib */,
 				03672C861B609535007E51B9 /* Main.storyboard */,
-				03672C801B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld */,
+				031FEB6B1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld */,
 				03B985F41B79B01E007671BC /* SettingsViewController.h */,
 				03B985F51B79B01E007671BC /* SettingsViewController.m */,
 				03672C791B609535007E51B9 /* Supporting Files */,
@@ -326,12 +326,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				03672CB01B6340A4007E51B9 /* Addons.m in Sources */,
+				031FEB6D1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */,
 				03672C7F1B609535007E51B9 /* AppDelegate.m in Sources */,
 				03672CA61B6096DE007E51B9 /* Addon.m in Sources */,
 				03B985F61B79B01E007671BC /* SettingsViewController.m in Sources */,
 				03672CA71B6096DE007E51B9 /* AddonsTableViewController.m in Sources */,
 				03B985BE1B6726C7007671BC /* AddonGraphViewController.m in Sources */,
-				03672C821B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */,
 				038C5F961B6584CC0027E915 /* AddonDownloadsTableViewController.m in Sources */,
 				03672C7C1B609535007E51B9 /* main.m in Sources */,
 			);
@@ -552,12 +552,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		03672C801B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodeld */ = {
+		031FEB6B1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				03672C811B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodel */,
+				031FEB6C1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodel */,
 			);
-			currentVersion = 03672C811B609535007E51B9 /* My_Warcraft_Addon_Downloads.xcdatamodel */;
+			currentVersion = 031FEB6C1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodel */;
 			path = My_Warcraft_Addon_Downloads.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

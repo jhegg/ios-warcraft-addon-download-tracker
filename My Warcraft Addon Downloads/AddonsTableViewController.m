@@ -15,7 +15,7 @@
 @interface AddonsTableViewController ()
 
 @property Addons *addons;
-@property NSURL *url;
+@property (strong, nonatomic) NSURL *url;
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 
 - (IBAction)refresh:(UIRefreshControl *)sender;
@@ -23,6 +23,8 @@
 @end
 
 @implementation AddonsTableViewController
+
+@synthesize managedObjectContext;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,7 +36,7 @@
     self.addons = [[Addons alloc] init];
     self.addons.delegate = self;
     
-    //self.url = [NSURL URLWithString:@"https://boxing-marks-7365.herokuapp.com/addons"];
+    [self fetchUrlFromCoreData];
     [self updateViewBasedOnUrl];
 }
 
@@ -54,12 +56,21 @@
     [self.refreshControl endRefreshing];
 }
 
+- (void)fetchUrlFromCoreData {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Settings" inManagedObjectContext:context]];
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects.count == 1) {
+        self.url = [NSURL URLWithString:[[fetchedObjects firstObject] valueForKey:@"url"]];
+    }
+    NSLog(@"Fetched %lu settings entries", (unsigned long)fetchedObjects.count);
+}
+
 - (void)updateViewBasedOnUrl {
     [self updateUrlLabel];
-//    if ([self urlIsConfigured]) {
-//        [self.refreshControl beginRefreshing];
-//        [self refresh:self.refreshControl];
-//    }
+    [self beginRefreshingAddons];
 }
 
 - (void)updateUrlLabel {
@@ -70,6 +81,14 @@
 
 - (BOOL)urlIsConfigured {
     return self.url && self.url.host.length > 0;
+}
+
+- (void)beginRefreshingAddons {
+    if ([self urlIsConfigured]) {
+        [self.refreshControl beginRefreshing];
+        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y - self.refreshControl.frame.size.height) animated:YES];
+        [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+    }
 }
 
 #pragma mark - Table view data source
@@ -151,15 +170,33 @@
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     SettingsViewController *source = [segue sourceViewController];
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Settings" inManagedObjectContext:context]];
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (error) {
+        NSLog(@"Error fetching URL: %@", [error localizedDescription]);
+    } else {
+        NSLog(@"Fetched %lu settings entries", (unsigned long)fetchedObjects.count);
+        if (fetchedObjects.count == 0) {
+            NSManagedObject *settings = [NSEntityDescription insertNewObjectForEntityForName:@"Settings" inManagedObjectContext:context];
+            [settings setValue:source.url.absoluteString forKey:@"url"];
+            NSLog(@"Creating URL with: %@", source.url.absoluteString);
+        } else {
+            NSManagedObject *settings = [fetchedObjects firstObject];
+            [settings setValue:source.url.absoluteString forKey:@"url"];
+            NSLog(@"Updating URL with: %@", source.url.absoluteString);
+        }
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Unable to save URL: %@", [error localizedDescription]);
+        }
+    }
+    
     self.url = source.url;
     [self updateViewBasedOnUrl];
-    
-    if ([self urlIsConfigured]) {
-        [self.refreshControl beginRefreshing];
-        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y - self.refreshControl.frame.size.height) animated:YES];
-//        [self refresh:self.refreshControl];
-        [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
-    }
 }
 
 @end

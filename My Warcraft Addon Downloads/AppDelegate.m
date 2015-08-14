@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AddonsTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    AddonsTableViewController *addonsTableViewController = [[navigationController viewControllers] firstObject];
+    addonsTableViewController.managedObjectContext = self.managedObjectContext;
+    
     return YES;
 }
 
