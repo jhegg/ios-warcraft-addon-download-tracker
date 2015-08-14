@@ -10,9 +10,28 @@
             <objects>
                 <tableViewController id="MX9-ew-ZXM" customClass="AddonsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LA1-e3-Pah">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ehN-PD-jqU" userLabel="urlView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://boxing-marks-7365.herokuapp.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTg-Bp-QT9">
+                                    <rect key="frame" x="8" y="8" width="584" height="28"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="LTg-Bp-QT9" secondAttribute="bottom" constant="8" id="Ids-z2-YkY"/>
+                                <constraint firstItem="LTg-Bp-QT9" firstAttribute="leading" secondItem="ehN-PD-jqU" secondAttribute="leading" constant="8" id="aZ8-TU-zS7"/>
+                                <constraint firstItem="LTg-Bp-QT9" firstAttribute="top" secondItem="ehN-PD-jqU" secondAttribute="top" constant="8" id="iU4-Zr-cGg"/>
+                                <constraint firstAttribute="trailing" secondItem="LTg-Bp-QT9" secondAttribute="trailing" constant="8" id="ppu-Ib-L2H"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ListPrototypeCell" textLabel="Qhq-11-1Dd" detailTextLabel="F19-cf-jqT" style="IBUITableViewCellStyleValue1" id="zNi-ye-nq9">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -43,15 +62,81 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Addons" id="2N6-YK-Sc7" userLabel="Addons"/>
+                    <navigationItem key="navigationItem" title="Addons" id="2N6-YK-Sc7" userLabel="Addons">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Ohd-Zh-Ogh">
+                            <connections>
+                                <segue destination="HQN-aZ-MVI" kind="presentation" identifier="settingsDetail" id="6HI-yU-Zxm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="LJL-9h-cF1">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
                     </refreshControl>
+                    <connections>
+                        <outlet property="urlLabel" destination="LTg-Bp-QT9" id="EX9-nS-dbv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qr3-BD-P7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="34" y="275"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Eio-wX-ReQ">
+            <objects>
+                <viewController id="0X7-nD-is2" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oGH-QG-M9T"/>
+                        <viewControllerLayoutGuide type="bottom" id="GT9-LO-2mM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JGf-Ww-Tqx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="https://example.heroku.com/addons" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kb3-ws-aoH">
+                                <rect key="frame" x="16" y="109" width="568" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL of addon download count service" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hug-ia-3jB">
+                                <rect key="frame" x="16" y="80" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kb3-ws-aoH" firstAttribute="trailing" secondItem="JGf-Ww-Tqx" secondAttribute="trailingMargin" id="0u6-m8-vd7"/>
+                            <constraint firstItem="kb3-ws-aoH" firstAttribute="top" secondItem="hug-ia-3jB" secondAttribute="bottom" constant="8" symbolic="YES" id="YD8-37-DSJ"/>
+                            <constraint firstItem="hug-ia-3jB" firstAttribute="top" secondItem="oGH-QG-M9T" secondAttribute="bottom" constant="16" id="gfS-Ks-WZX"/>
+                            <constraint firstItem="hug-ia-3jB" firstAttribute="leading" secondItem="JGf-Ww-Tqx" secondAttribute="leadingMargin" id="nX6-3y-Kzi"/>
+                            <constraint firstItem="kb3-ws-aoH" firstAttribute="leading" secondItem="JGf-Ww-Tqx" secondAttribute="leadingMargin" id="st5-gv-0Q6"/>
+                            <constraint firstItem="hug-ia-3jB" firstAttribute="trailing" secondItem="JGf-Ww-Tqx" secondAttribute="trailingMargin" id="vgm-56-ozd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="zAe-JE-vI1">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="0eL-b0-OcK" userLabel="Cancel">
+                            <connections>
+                                <segue destination="nQc-73-DH5" kind="unwind" unwindAction="unwindToList:" id="UqX-YO-kPp"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="bRx-PG-snr" userLabel="Save">
+                            <connections>
+                                <segue destination="nQc-73-DH5" kind="unwind" unwindAction="unwindToList:" id="ZJq-yL-cbP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="bRx-PG-snr" id="Ab0-Q3-GlR"/>
+                        <outlet property="urlTextField" destination="kb3-ws-aoH" id="0y4-rW-Gac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="diH-DE-mYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nQc-73-DH5" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="821" y="983"/>
         </scene>
         <!--Addon-->
         <scene sceneID="Csy-yA-G9u">
@@ -173,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHg-0O-HRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656" y="1083"/>
+            <point key="canvasLocation" x="2468" y="1083"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="abz-LB-G55">
@@ -214,6 +299,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0IB-8N-4Oe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="736" y="285"/>
+        </scene>
+        <!--Settings Navigation Controller-->
+        <scene sceneID="Hqe-eE-jD5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HQN-aZ-MVI" userLabel="Settings Navigation Controller" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1c3-sd-edE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0X7-nD-is2" kind="relationship" relationship="rootViewController" id="K1h-1p-SCA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9aJ-iQ-SVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9" y="983"/>
         </scene>
     </scenes>
 </document>

@@ -10,10 +10,13 @@
 #import "AddonDownloadsTableViewController.h"
 #import "Addon.h"
 #import "Addons.h"
+#import "SettingsViewController.h"
 
 @interface AddonsTableViewController ()
 
 @property Addons *addons;
+@property NSURL *url;
+@property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 
 - (IBAction)refresh:(UIRefreshControl *)sender;
 
@@ -31,7 +34,8 @@
     self.addons = [[Addons alloc] init];
     self.addons.delegate = self;
     
-    [self refresh:self.refreshControl];
+    //self.url = [NSURL URLWithString:@"https://boxing-marks-7365.herokuapp.com/addons"];
+    [self updateViewBasedOnUrl];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +51,25 @@
 
 - (void)refreshTable {
     [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (void)updateViewBasedOnUrl {
+    [self updateUrlLabel];
+//    if ([self urlIsConfigured]) {
+//        [self.refreshControl beginRefreshing];
+//        [self refresh:self.refreshControl];
+//    }
+}
+
+- (void)updateUrlLabel {
+    [self urlIsConfigured]
+        ? (self.urlLabel.text = self.url.absoluteString)
+        : (self.urlLabel.text = @"Please tap Settings to configure");
+}
+
+- (BOOL)urlIsConfigured {
+    return self.url && self.url.host.length > 0;
 }
 
 #pragma mark - Table view data source
@@ -96,20 +119,47 @@
         AddonDownloadsTableViewController *destination = (AddonDownloadsTableViewController *)[[segue destinationViewController] topViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         destination.addon = [[self.addons allAddons] objectAtIndex:indexPath.row];
+    } else if ([segue.identifier isEqualToString:@"settingsDetail"]) {
+        SettingsViewController *destination = (SettingsViewController *)[[segue destinationViewController] topViewController];
+        destination.url = self.url;
     }
 }
 
 - (IBAction)refresh:(UIRefreshControl *)sender {
-    sender.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    if (![self urlIsConfigured]) {
+        //sender.attributedTitle = [[NSAttributedString alloc] initWithString:@"Cannot refresh; please set URL..."];
+        [sender endRefreshing];
+        return;
+    }
+    
+//    sender.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    sender.attributedTitle = [[NSAttributedString alloc] initWithString:[self getLastUpdatedTitle]];
     
     [self updateAddons:^{
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MMM d, h:mm a"];
-        NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
-                                 [formatter stringFromDate:[NSDate date]]];
-        sender.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-        [sender endRefreshing];
+//        sender.attributedTitle = [[NSAttributedString alloc] initWithString:[self getLastUpdatedTitle]];
+        //[sender endRefreshing];
     }];
+}
+
+- (NSString *)getLastUpdatedTitle {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+                             [formatter stringFromDate:[NSDate date]]];
+    return lastUpdated;
+}
+
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+    SettingsViewController *source = [segue sourceViewController];
+    self.url = source.url;
+    [self updateViewBasedOnUrl];
+    
+    if ([self urlIsConfigured]) {
+        [self.refreshControl beginRefreshing];
+        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y - self.refreshControl.frame.size.height) animated:YES];
+//        [self refresh:self.refreshControl];
+        [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+    }
 }
 
 @end

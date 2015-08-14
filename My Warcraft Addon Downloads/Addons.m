@@ -124,7 +124,10 @@
         if ([addon.name isEqualToString:addonName]) {
             addon.currentDownloadCount = count;
             addon.downloadHistory = downloads;
-            [self.delegate refreshTable];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate refreshTable];
+            });
+            
             return;
         }
     }

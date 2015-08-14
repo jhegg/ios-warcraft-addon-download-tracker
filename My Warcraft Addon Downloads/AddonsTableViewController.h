@@ -11,4 +11,6 @@
 
 @interface AddonsTableViewController : UITableViewController <AddonsTableViewControllerDelegate>
 
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+
 @end
