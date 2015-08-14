@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+- (IBAction)keyboardDone:(id)sender;
 
 @end
 
@@ -35,6 +36,11 @@
     if (self.urlTextField.text.length > 0) {
         self.url = [NSURL URLWithString:self.urlTextField.text];
     }
+}
+
+- (IBAction)keyboardDone:(id)sender {
+    [self.urlTextField becomeFirstResponder];
+    [self.urlTextField resignFirstResponder];
 }
 
 @end
