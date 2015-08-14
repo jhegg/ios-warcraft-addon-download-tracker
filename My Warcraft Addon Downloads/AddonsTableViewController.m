@@ -146,17 +146,13 @@
 
 - (IBAction)refresh:(UIRefreshControl *)sender {
     if (![self urlIsConfigured]) {
-        //sender.attributedTitle = [[NSAttributedString alloc] initWithString:@"Cannot refresh; please set URL..."];
         [sender endRefreshing];
         return;
     }
     
-//    sender.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
     sender.attributedTitle = [[NSAttributedString alloc] initWithString:[self getLastUpdatedTitle]];
     
     [self updateAddons:^{
-//        sender.attributedTitle = [[NSAttributedString alloc] initWithString:[self getLastUpdatedTitle]];
-        //[sender endRefreshing];
     }];
 }
 
@@ -171,10 +167,19 @@
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     SettingsViewController *source = [segue sourceViewController];
     
-    [self createOrUpdateSettingsUrlInCoreData:source.url];
+    if ([self shouldUpdateWithUrl:source.url]) {
+        [self createOrUpdateSettingsUrlInCoreData:source.url];
+        self.url = source.url;
+        [self updateViewBasedOnUrl];
+    }
+}
+
+- (Boolean)shouldUpdateWithUrl:(NSURL *)url {
+    if (!url) {
+        return NO;
+    }
     
-    self.url = source.url;
-    [self updateViewBasedOnUrl];
+    return ![url isEqual:self.url];
 }
 
 - (void)createOrUpdateSettingsUrlInCoreData:(NSURL *)url {
