@@ -11,11 +11,12 @@
 #import "Addon.h"
 #import "Addons.h"
 #import "SettingsViewController.h"
+#import "Settings.h"
 
 @interface AddonsTableViewController ()
 
 @property Addons *addons;
-@property (strong, nonatomic) NSURL *url;
+@property Settings *settings;
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 
 - (IBAction)refresh:(UIRefreshControl *)sender;
@@ -36,7 +37,10 @@
     self.addons = [[Addons alloc] init];
     self.addons.delegate = self;
     
-    [self fetchUrlFromCoreData];
+    self.settings = [[Settings alloc] init];
+    self.settings.managedObjectContext = managedObjectContext;
+    [self.settings loadUrl];
+    
     [self updateViewBasedOnUrl];
 }
 
@@ -56,35 +60,19 @@
     [self.refreshControl endRefreshing];
 }
 
-- (void)fetchUrlFromCoreData {
-    NSManagedObjectContext *context = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Settings" inManagedObjectContext:context]];
-    NSError *error;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    if (fetchedObjects.count == 1) {
-        self.url = [NSURL URLWithString:[[fetchedObjects firstObject] valueForKey:@"url"]];
-    }
-    NSLog(@"Fetched %lu settings entries", (unsigned long)fetchedObjects.count);
-}
-
 - (void)updateViewBasedOnUrl {
     [self updateUrlLabel];
     [self beginRefreshingAddons];
 }
 
 - (void)updateUrlLabel {
-    [self urlIsConfigured]
-        ? (self.urlLabel.text = self.url.absoluteString)
+    [self.settings urlIsConfigured]
+        ? (self.urlLabel.text = self.settings.url.absoluteString)
         : (self.urlLabel.text = @"Please tap Settings to configure");
 }
 
-- (BOOL)urlIsConfigured {
-    return self.url && self.url.host.length > 0;
-}
-
 - (void)beginRefreshingAddons {
-    if ([self urlIsConfigured]) {
+    if ([self.settings urlIsConfigured]) {
         [self.refreshControl beginRefreshing];
         [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y - self.refreshControl.frame.size.height) animated:YES];
         [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
@@ -140,12 +128,12 @@
         destination.addon = [[self.addons allAddons] objectAtIndex:indexPath.row];
     } else if ([segue.identifier isEqualToString:@"settingsDetail"]) {
         SettingsViewController *destination = (SettingsViewController *)[[segue destinationViewController] topViewController];
-        destination.url = self.url;
+        destination.url = self.settings.url;
     }
 }
 
 - (IBAction)refresh:(UIRefreshControl *)sender {
-    if (![self urlIsConfigured]) {
+    if (![self.settings urlIsConfigured]) {
         [sender endRefreshing];
         return;
     }
@@ -167,44 +155,9 @@
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     SettingsViewController *source = [segue sourceViewController];
     
-    if ([self shouldUpdateWithUrl:source.url]) {
-        [self createOrUpdateSettingsUrlInCoreData:source.url];
-        self.url = source.url;
+    if ([self.settings urlNeedsUpdating:source.url]) {
+        [self.settings updateUrl:source.url];
         [self updateViewBasedOnUrl];
-    }
-}
-
-- (Boolean)shouldUpdateWithUrl:(NSURL *)url {
-    if (!url) {
-        return NO;
-    }
-    
-    return ![url isEqual:self.url];
-}
-
-- (void)createOrUpdateSettingsUrlInCoreData:(NSURL *)url {
-    NSManagedObjectContext *context = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Settings" inManagedObjectContext:context]];
-    NSError *error;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    if (error) {
-        NSLog(@"Error fetching URL: %@", [error localizedDescription]);
-    } else {
-        NSLog(@"Fetched %lu settings entries", (unsigned long)fetchedObjects.count);
-        if (fetchedObjects.count == 0) {
-            NSManagedObject *settings = [NSEntityDescription insertNewObjectForEntityForName:@"Settings" inManagedObjectContext:context];
-            [settings setValue:url.absoluteString forKey:@"url"];
-            NSLog(@"Creating URL with: %@", url.absoluteString);
-        } else {
-            NSManagedObject *settings = [fetchedObjects firstObject];
-            [settings setValue:url.absoluteString forKey:@"url"];
-            NSLog(@"Updating URL with: %@", url.absoluteString);
-        }
-        NSError *error;
-        if (![context save:&error]) {
-            NSLog(@"Unable to save URL: %@", [error localizedDescription]);
-        }
     }
 }
 

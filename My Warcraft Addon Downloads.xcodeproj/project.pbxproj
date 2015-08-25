@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		031FEB6D1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 031FEB6B1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld */; };
+		031FEB701B8C229A000F0D40 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 031FEB6F1B8C229A000F0D40 /* Settings.m */; };
 		03672C7C1B609535007E51B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672C7B1B609535007E51B9 /* main.m */; };
 		03672C7F1B609535007E51B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03672C7E1B609535007E51B9 /* AppDelegate.m */; };
 		03672C881B609535007E51B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03672C861B609535007E51B9 /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		031FEB6C1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = My_Warcraft_Addon_Downloads.xcdatamodel; sourceTree = "<group>"; };
+		031FEB6E1B8C229A000F0D40 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		031FEB6F1B8C229A000F0D40 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		03672C761B609535007E51B9 /* My Warcraft Addon Downloads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Warcraft Addon Downloads.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03672C7A1B609535007E51B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03672C7B1B609535007E51B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				03672C8B1B609535007E51B9 /* LaunchScreen.xib */,
 				03672C861B609535007E51B9 /* Main.storyboard */,
 				031FEB6B1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld */,
+				031FEB6E1B8C229A000F0D40 /* Settings.h */,
+				031FEB6F1B8C229A000F0D40 /* Settings.m */,
 				03B985F41B79B01E007671BC /* SettingsViewController.h */,
 				03B985F51B79B01E007671BC /* SettingsViewController.m */,
 				03672C791B609535007E51B9 /* Supporting Files */,
@@ -327,6 +332,7 @@
 			files = (
 				03672CB01B6340A4007E51B9 /* Addons.m in Sources */,
 				031FEB6D1B7DA4D0000F0D40 /* My_Warcraft_Addon_Downloads.xcdatamodeld in Sources */,
+				031FEB701B8C229A000F0D40 /* Settings.m in Sources */,
 				03672C7F1B609535007E51B9 /* AppDelegate.m in Sources */,
 				03672CA61B6096DE007E51B9 /* Addon.m in Sources */,
 				03B985F61B79B01E007671BC /* SettingsViewController.m in Sources */,
