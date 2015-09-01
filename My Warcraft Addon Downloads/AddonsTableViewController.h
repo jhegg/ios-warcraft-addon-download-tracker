@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@import CoreData;
 #import "AddonsTableViewControllerDelegate.h"
 
 @interface AddonsTableViewController : UITableViewController <AddonsTableViewControllerDelegate>
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 
 @end
