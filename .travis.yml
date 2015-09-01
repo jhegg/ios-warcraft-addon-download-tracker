@@ -1,0 +1,4 @@
+language: objective-c
+xcode_workspace: "My Warcraft Addon Downloads.xcworkspace"
+xcode_scheme: "My Warcraft Addon Downloads"
+xcode_sdk: iphonesimulator8.4
